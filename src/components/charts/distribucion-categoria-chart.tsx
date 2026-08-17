@@ -8,15 +8,8 @@ import {
   YAxis,
 } from 'recharts'
 import type { Categoria } from '@/lib/types'
+import { ETIQUETAS_CATEGORIA } from '@/components/tickets/badges'
 import { ChartTooltip } from '@/components/charts/chart-tooltip'
-
-export const ETIQUETAS_CATEGORIA: Record<Categoria, string> = {
-  acceso: 'Acceso',
-  bug: 'Bug',
-  consulta: 'Consulta',
-  facturacion: 'Facturación',
-  mejora: 'Mejora',
-}
 
 export function DistribucionCategoriaChart({
   distribucion,

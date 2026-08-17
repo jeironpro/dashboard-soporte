@@ -1,10 +1,18 @@
-import type { Prioridad, TicketEstado } from '@/lib/types'
+import type { Categoria, Prioridad, TicketEstado } from '@/lib/types'
 import { Badge } from '@/components/ui/badge'
 
 export const ETIQUETAS_ESTADO: Record<TicketEstado, string> = {
   abierto: 'Abierto',
   en_progreso: 'En progreso',
   cerrado: 'Cerrado',
+}
+
+export const ETIQUETAS_CATEGORIA: Record<Categoria, string> = {
+  acceso: 'Acceso',
+  bug: 'Bug',
+  consulta: 'Consulta',
+  facturacion: 'Facturación',
+  mejora: 'Mejora',
 }
 
 export const ETIQUETAS_PRIORIDAD: Record<Prioridad, string> = {
