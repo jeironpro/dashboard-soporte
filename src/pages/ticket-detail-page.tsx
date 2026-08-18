@@ -50,7 +50,7 @@ export function TicketDetailPage() {
         <p className="text-sm text-muted-foreground">
           El ticket {ticketId} no existe o fue eliminado.
         </p>
-        <Button variant="outline" render={<Link to="/tickets" />}>
+        <Button variant="outline" nativeButton={false} render={<Link to="/tickets" />}>
           Volver a Tickets
         </Button>
       </section>
@@ -68,7 +68,7 @@ export function TicketDetailPage() {
 
   return (
     <section className="mx-auto flex max-w-6xl flex-col gap-4">
-      <Button variant="ghost" size="sm" className="-mx-2 w-fit" render={<Link to="/tickets" />}>
+      <Button variant="ghost" size="sm" className="-mx-2 w-fit" nativeButton={false} render={<Link to="/tickets" />}>
         <ArrowLeft aria-hidden="true" className="size-4" />
         Volver a Tickets
       </Button>
