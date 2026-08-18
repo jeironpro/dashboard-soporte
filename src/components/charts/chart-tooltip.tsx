@@ -1,3 +1,7 @@
+/**
+ * Tooltip personalizado para gráficos de Recharts.
+ * Muestra el nombre del serie, valor y color en formato consistente.
+ */
 interface ItemTooltip {
   name?: string
   value?: number | string

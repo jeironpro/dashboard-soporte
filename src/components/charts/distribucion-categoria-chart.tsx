@@ -1,3 +1,8 @@
+/**
+ * Gráfico de distribución por categoría.
+ * Muestra la cantidad de tickets por categoría en formato de barras horizontales.
+ * Incluye tabla de acceso alternativo para lectores de pantalla.
+ */
 import {
   Bar,
   BarChart,

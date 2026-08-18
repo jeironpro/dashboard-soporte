@@ -1,3 +1,8 @@
+/**
+ * Cabecera de página.
+ * Muestra el título dinámico según la ruta actual y el contador de tickets abiertos.
+ * Incluye animaciones de entrada y focus management para accesibilidad.
+ */
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { animate, createScope, stagger } from 'animejs'

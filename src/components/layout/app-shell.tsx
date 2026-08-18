@@ -1,3 +1,8 @@
+/**
+ * Shell de la aplicación.
+ * Contiene el sidebar, header y el contenido principal.
+ * Maneja el layout responsive con padding variable según dispositivo.
+ */
 import { Outlet } from 'react-router-dom'
 import { FloatingSidebar } from '@/components/layout/floating-sidebar'
 import { Header } from '@/components/layout/header'

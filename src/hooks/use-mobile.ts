@@ -1,3 +1,7 @@
+/**
+ * Hook para detectar si el dispositivo es móvil.
+ * Usa matchMedia con breakpoint de 768px.
+ */
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768

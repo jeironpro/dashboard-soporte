@@ -1,3 +1,7 @@
+/**
+ * Funciones de agregación y estadísticas de tickets.
+ * Calcula métricas como tiempos de respuesta, satisfacción y distribuciones.
+ */
 import type { Categoria, Prioridad, Ticket } from './types'
 
 export interface ConteoPorEstado {
@@ -77,14 +81,6 @@ export function getDistribucionPorCategoria(tickets: Ticket[]): Record<Categoria
   const distribucion = { acceso: 0, bug: 0, consulta: 0, facturacion: 0, mejora: 0 }
   for (const ticket of tickets) {
     distribucion[ticket.categoria] += 1
-  }
-  return distribucion
-}
-
-export function getDistribucionPorCanal(tickets: Ticket[]): Record<string, number> {
-  const distribucion: Record<string, number> = {}
-  for (const ticket of tickets) {
-    distribucion[ticket.canal] = (distribucion[ticket.canal] ?? 0) + 1
   }
   return distribucion
 }

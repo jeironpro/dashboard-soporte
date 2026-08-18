@@ -1,3 +1,7 @@
+/**
+ * Utilidades de formateo de fechas y números.
+ * Usa Intl.DateTimeFormat para localización en español (Argentina).
+ */
 const ZONA_HORARIA = 'America/Argentina/Buenos_Aires'
 
 const MESES = [
@@ -69,9 +73,4 @@ export function formatearIniciales(nombre: string): string {
     .map((parte) => parte[0])
     .join('')
     .toUpperCase()
-}
-
-export function formatearNumero(valor: number | null): string {
-  if (valor === null) return '—'
-  return new Intl.NumberFormat('es-AR').format(valor)
 }

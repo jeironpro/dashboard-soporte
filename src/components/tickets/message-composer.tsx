@@ -1,3 +1,8 @@
+/**
+ * Compositor de mensajes.
+ * Formulario para enviar mensajes con validación y animaciones.
+ * Actualmente deshabilitado (simulación de functionality).
+ */
 import { useEffect, useRef, useState } from 'react'
 import { Send } from 'lucide-react'
 import { animate, createScope } from 'animejs'

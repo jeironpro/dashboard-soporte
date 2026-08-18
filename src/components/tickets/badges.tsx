@@ -1,3 +1,7 @@
+/**
+ * Badges para estado, prioridad y categoría de tickets.
+ * Incluye constantes de etiquetas y componentes de badge con estilos específicos.
+ */
 import type { Canal, Categoria, Prioridad, TicketEstado } from '@/lib/types'
 import { Badge } from '@/components/ui/badge'
 

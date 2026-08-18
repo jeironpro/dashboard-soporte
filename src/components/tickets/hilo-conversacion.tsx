@@ -1,3 +1,8 @@
+/**
+ * Hilo de conversación del ticket.
+ * Muestra los mensajes en orden cronológico con avatares y timestamps.
+ * Incluye composer de mensajes deshabilitado (simulación).
+ */
 import { useEffect, useRef } from 'react'
 import { BadgeCheck, StickyNote } from 'lucide-react'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'

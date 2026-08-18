@@ -1,3 +1,8 @@
+/**
+ * Sidebar flotante de navegación.
+ * Se muestra fijo a la izquierda en desktop y como menú hamburguesa en móvil.
+ * Incluye navegación principal, botón de nuevo ticket y perfil del usuario.
+ */
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import {
@@ -10,10 +15,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Headset,
-  LayoutDashboard,
   LogOut,
   Menu,
-  Ticket,
   User,
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
@@ -22,11 +25,7 @@ import { NuevoTicketDialog } from '@/components/tickets/nuevo-ticket-dialog'
 import { AGENTES, TICKETS } from '@/lib/mock'
 import { getConteoPorEstado } from '@/lib/stats'
 import { useIsMobile } from '@/hooks/use-mobile'
-
-const NAV_PRINCIPAL = [
-  { titulo: 'Panel', icono: LayoutDashboard, to: '/', end: true },
-  { titulo: 'Tickets', icono: Ticket, to: '/tickets', end: false },
-]
+import { NAV_PRINCIPAL } from '@/lib/nav'
 
 const USUARIO = AGENTES[0]
 

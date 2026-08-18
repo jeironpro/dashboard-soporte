@@ -1,3 +1,8 @@
+/**
+ * Tarjeta de métrica KPI.
+ * Muestra un valor principal con etiqueta y detalle.
+ * Soporte para animaciones de entrada y estado destacado.
+ */
 import { useEffect, useRef } from 'react'
 import { animate, createScope } from 'animejs'
 import { cn } from '@/lib/utils'
