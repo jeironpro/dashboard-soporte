@@ -1,10 +1,11 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { axe } from 'jest-axe'
 import { MemoryRouter } from 'react-router-dom'
 import { TicketsPage } from './tickets-page'
 
 function renderizar() {
-  render(
+  return render(
     <MemoryRouter>
       <TicketsPage />
     </MemoryRouter>,
@@ -72,5 +73,12 @@ describe('TicketsPage', () => {
       screen.queryByText('No se encontraron tickets'),
     ).not.toBeInTheDocument()
     expect(screen.getByText('22 de 22 tickets')).toBeInTheDocument()
+  })
+
+  it('no tiene violaciones de accesibilidad', async () => {
+    const { container } = renderizar()
+
+    const resultados = await axe(container)
+    expect(resultados).toHaveNoViolations()
   })
 })

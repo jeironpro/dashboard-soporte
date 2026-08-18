@@ -340,14 +340,26 @@ export function TicketsPage() {
             <TableHeader>
               {tabla.getHeaderGroups().map((grupo) => (
                 <TableRow key={grupo.id} className="hover:bg-transparent">
-                  {grupo.headers.map((cabecera) => (
-                    <TableHead key={cabecera.id}>
-                      {flexRender(
-                        cabecera.column.columnDef.header,
-                        cabecera.getContext(),
-                      )}
-                    </TableHead>
-                  ))}
+                  {grupo.headers.map((cabecera) => {
+                    const orden = cabecera.column.getIsSorted()
+                    return (
+                      <TableHead
+                        key={cabecera.id}
+                        aria-sort={
+                          orden === 'asc'
+                            ? 'ascending'
+                            : orden === 'desc'
+                              ? 'descending'
+                              : undefined
+                        }
+                      >
+                        {flexRender(
+                          cabecera.column.columnDef.header,
+                          cabecera.getContext(),
+                        )}
+                      </TableHead>
+                    )
+                  })}
                 </TableRow>
               ))}
             </TableHeader>

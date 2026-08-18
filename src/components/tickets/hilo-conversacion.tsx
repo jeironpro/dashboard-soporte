@@ -38,7 +38,7 @@ export function HiloConversacion({ mensajes }: { mensajes: Conversacion[] }) {
             >
               <BadgeCheck aria-hidden="true" className="size-3.5 shrink-0" />
               <span className="max-w-[90%]">{mensaje.contenido}</span>
-              <time className="shrink-0 whitespace-nowrap">
+              <time dateTime={mensaje.creado_el} className="shrink-0 whitespace-nowrap">
                 {formatearFechaHora(mensaje.creado_el)}
               </time>
             </li>
@@ -58,7 +58,7 @@ export function HiloConversacion({ mensajes }: { mensajes: Conversacion[] }) {
               <span className="flex items-center gap-1.5 text-xs font-medium text-amber-900">
                 <StickyNote aria-hidden="true" className="size-3.5" />
                 Nota interna · {autor.nombre}
-                <time className="font-normal text-amber-900/70">
+                <time dateTime={mensaje.creado_el} className="font-normal text-amber-900/70">
                   {formatearFechaHora(mensaje.creado_el)}
                 </time>
               </span>
@@ -87,7 +87,9 @@ export function HiloConversacion({ mensajes }: { mensajes: Conversacion[] }) {
                   {autor.nombre}
                 </span>
                 {autor.rol && <span aria-hidden="true">· {autor.rol}</span>}
-                <time>{formatearFechaHora(mensaje.creado_el)}</time>
+                <time dateTime={mensaje.creado_el}>
+                  {formatearFechaHora(mensaje.creado_el)}
+                </time>
               </span>
               <p
                 className={`rounded-xl px-3.5 py-2.5 text-sm whitespace-pre-wrap ${

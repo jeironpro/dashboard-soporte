@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Plus, Search } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
@@ -14,11 +15,20 @@ function obtenerTitulo(pathname: string): string {
 export function Header() {
   const location = useLocation()
   const titulo = obtenerTitulo(location.pathname)
+  const tituloRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    tituloRef.current?.focus({ preventScroll: true })
+  }, [location.pathname])
 
   return (
     <header className="flex h-14 shrink-0 items-center gap-3 border-b bg-background/90 px-4 backdrop-blur sm:px-6">
       <SidebarTrigger aria-label="Abrir o cerrar la barra lateral" />
-      <h1 className="truncate font-heading text-lg font-semibold tracking-tight">
+      <h1
+        ref={tituloRef}
+        tabIndex={-1}
+        className="truncate font-heading text-lg font-semibold tracking-tight outline-none"
+      >
         {titulo}
       </h1>
       <div className="ml-auto flex items-center gap-2">

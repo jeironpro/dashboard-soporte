@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { axe } from 'jest-axe'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { TicketDetailPage } from './ticket-detail-page'
 
@@ -46,5 +47,12 @@ describe('TicketDetailPage', () => {
 
     expect(screen.getByText('Ticket no encontrado')).toBeInTheDocument()
     expect(screen.getByText(/NO-EXISTE/)).toBeInTheDocument()
+  })
+
+  it('no tiene violaciones de accesibilidad', async () => {
+    const { container } = renderizar()
+
+    const resultados = await axe(container)
+    expect(resultados).toHaveNoViolations()
   })
 })
