@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   flexRender,
@@ -7,7 +7,8 @@ import {
   type Column,
   type ColumnDef,
 } from '@tanstack/react-table'
-import { ArrowUpDown, ChevronDown, ChevronUp, Inbox, Search } from 'lucide-react'
+import { ArrowUpDown, ChevronDown, ChevronUp, Download, FileSpreadsheet, Inbox, Search } from 'lucide-react'
+import { animate, createScope, stagger } from 'animejs'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -216,6 +217,8 @@ export function TicketsPage() {
   const [estado, setEstado] = useState('todos')
   const [prioridad, setPrioridad] = useState('todos')
   const [categoria, setCategoria] = useState('todos')
+  const tableRef = useRef<HTMLDivElement>(null)
+  const scopeRef = useRef<ReturnType<typeof createScope> | null>(null)
 
   const hayFiltros =
     busqueda.trim() !== '' ||
@@ -268,8 +271,22 @@ export function TicketsPage() {
 
   const filas = tabla.getRowModel().rows
 
+  useEffect(() => {
+    if (!tableRef.current) return
+    scopeRef.current = createScope({ root: tableRef }).add(() => {
+      animate('.table-entrance', {
+        opacity: [0, 1],
+        translateY: [8, 0],
+        duration: 350,
+        delay: stagger(30, { start: 80 }),
+        ease: 'out(3)',
+      })
+    })
+    return () => scopeRef.current?.revert()
+  }, [filas.length, busqueda, estado, prioridad, categoria])
+
   return (
-    <section className="mx-auto flex max-w-6xl flex-col gap-4">
+    <section className="flex flex-col gap-4">
       <header className="flex flex-wrap items-center gap-3">
         <div className="relative min-w-0 flex-1 basis-64">
           <Search
@@ -311,18 +328,39 @@ export function TicketsPage() {
             ? '1 ticket'
             : `${filas.length} de ${TICKETS.length} tickets`}
         </p>
-        {hayFiltros && (
-          <Button variant="ghost" size="sm" onClick={limpiarFiltros}>
-            Limpiar filtros
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            disabled
+            title="Próximamente"
+          >
+            <Download aria-hidden="true" className="size-3.5" />
+            CSV
           </Button>
-        )}
+          <Button
+            variant="outline"
+            size="sm"
+            disabled
+            title="Próximamente"
+          >
+            <FileSpreadsheet aria-hidden="true" className="size-3.5" />
+            Excel
+          </Button>
+          {hayFiltros && (
+            <Button variant="ghost" size="sm" onClick={limpiarFiltros}>
+              Limpiar filtros
+            </Button>
+          )}
+        </div>
       </div>
 
       {filas.length === 0 ? (
-        <div className="flex flex-col items-center gap-3 rounded-xl border bg-card px-6 py-16 text-center">
-          <span className="flex size-12 items-center justify-center rounded-full bg-muted">
-            <Inbox aria-hidden="true" className="size-6 text-muted-foreground" />
+        <div className="relative flex flex-col items-center gap-3 overflow-hidden rounded-[var(--radius-lg)] border border-dashed border-border bg-card px-6 py-16 text-center">
+          <span className="flex size-12 items-center justify-center rounded-full border border-border bg-paper-1">
+            <Inbox aria-hidden="true" className="size-6 text-ink-2" />
           </span>
+          <p className="eyebrow">Sin coincidencias</p>
           <p className="text-lg font-semibold text-foreground">
             No se encontraron tickets
           </p>
@@ -335,7 +373,7 @@ export function TicketsPage() {
           </Button>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-xl border bg-card">
+        <div ref={tableRef} className="overflow-hidden rounded-[var(--radius-lg)] border border-border bg-card">
           <Table>
             <TableHeader>
               {tabla.getHeaderGroups().map((grupo) => (
@@ -365,7 +403,7 @@ export function TicketsPage() {
             </TableHeader>
             <TableBody>
               {filas.map((fila) => (
-                <TableRow key={fila.id}>
+                <TableRow key={fila.id} className="table-entrance" style={{ opacity: 0 }}>
                   {fila.getVisibleCells().map((celda) => (
                     <TableCell key={celda.id}>
                       {flexRender(

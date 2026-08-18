@@ -1,10 +1,6 @@
-import {
-  CircleAlert,
-  CircleCheckBig,
-  CircleDashed,
-  Timer,
-} from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { animate, createScope, stagger } from 'animejs'
 import {
   Card,
   CardContent,
@@ -30,6 +26,22 @@ import { TICKETS } from '@/lib/mock'
 import { formatearDuracionHoras } from '@/lib/format'
 
 export function DashboardPage() {
+  const rootRef = useRef<HTMLElement>(null)
+  const scopeRef = useRef<ReturnType<typeof createScope> | null>(null)
+
+  useEffect(() => {
+    scopeRef.current = createScope({ root: rootRef }).add(() => {
+      animate('.chart-entrance', {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 550,
+        delay: stagger(120, { start: 500 }),
+        ease: 'out(3)',
+      })
+    })
+    return () => scopeRef.current?.revert()
+  }, [])
+
   const conteo = getConteoPorEstado(TICKETS)
   const respuestaPromedio = getTiempoRespuestaPromedioHoras(TICKETS)
   const resolucionPromedio = getTiempoResolucionPromedioHoras(TICKETS)
@@ -43,58 +55,52 @@ export function DashboardPage() {
   ).length
 
   return (
-    <section className="mx-auto flex max-w-6xl flex-col gap-6">
+    <section ref={rootRef} className="flex flex-col gap-6">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <KpiCard
           etiqueta="Tickets abiertos"
           valor={String(conteo.abierto)}
           detalle="Esperando primera respuesta"
-          icono={CircleAlert}
           destacado
-          tonoIcono="bg-amber-100 text-amber-800"
+          index={0}
         />
         <KpiCard
           etiqueta="En progreso"
           valor={String(conteo.en_progreso)}
           detalle="Siendo atendidos por el equipo"
-          icono={CircleDashed}
-          tonoIcono="bg-sky-100 text-sky-800"
+          index={1}
         />
         <KpiCard
           etiqueta="Cerrados"
           valor={String(conteo.cerrado)}
           detalle={`CSAT ${satisfaccion ?? '—'} de 5`}
-          icono={CircleCheckBig}
-          tonoIcono="bg-emerald-100 text-emerald-800"
+          index={2}
         />
         <KpiCard
           etiqueta="Tiempo de respuesta promedio"
           valor={formatearDuracionHoras(respuestaPromedio)}
           detalle={`Basado en ${conRespuesta} primeras respuestas`}
-          icono={Timer}
-          tonoIcono="bg-primary/10 text-primary"
+          index={3}
         />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle>Tickets por día</CardTitle>
-            <CardDescription>
-              Creación de tickets por estado en los últimos 30 días
-            </CardDescription>
+        <Card className="chart-entrance lg:col-span-2" style={{ opacity: 0 }}>
+          <CardHeader className="flex-row items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow mb-1">Flujo por día</p>
+              <CardTitle className="text-xl">Tickets por día</CardTitle>
+            </div>
           </CardHeader>
           <CardContent>
             <TicketsPorDiaChart datos={serie} />
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="chart-entrance" style={{ opacity: 0 }}>
           <CardHeader>
-            <CardTitle>Por categoría</CardTitle>
-            <CardDescription>
-              Distribución del volumen actual
-            </CardDescription>
+            <p className="eyebrow mb-1">Composición</p>
+            <CardTitle className="text-xl">Por categoría</CardTitle>
           </CardHeader>
           <CardContent>
             <DistribucionCategoriaChart distribucion={distribucionCategoria} />
@@ -102,12 +108,13 @@ export function DashboardPage() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader className="flex-row items-center justify-between gap-4">
+      <Card className="chart-entrance" style={{ opacity: 0 }}>
+        <CardHeader className="flex-row items-end justify-between gap-4">
           <div>
-            <CardTitle>Tickets recientes</CardTitle>
+            <p className="eyebrow mb-1">Últimas solicitudes</p>
+            <CardTitle className="text-xl">Tickets recientes</CardTitle>
             <CardDescription>
-              Últimas solicitudes recibidas · tiempo medio de resolución{' '}
+              Tiempo medio de resolución{' '}
               {formatearDuracionHoras(resolucionPromedio)}{' '}
               {satisfaccion !== null ? `· CSAT ${satisfaccion}/5` : ''}
             </CardDescription>
