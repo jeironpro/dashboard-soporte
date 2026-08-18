@@ -1,3 +1,8 @@
+/**
+ * Lista de tickets recientes.
+ * Muestra los últimos tickets en formato de grid con alineación vertical.
+ * Incluye animaciones de entrada y hover effects.
+ */
 import { useEffect, useRef } from 'react'
 import { ArrowUpRight, MessageSquare } from 'lucide-react'
 import { Link } from 'react-router-dom'

@@ -1,3 +1,8 @@
+/**
+ * Datos mock y funciones de acceso a datos.
+ * Simula una API de backend con datos estáticos en JSON.
+ * Incluye funciones de búsqueda y filtrado.
+ */
 import agentsData from '@/data/agents.json'
 import clientsData from '@/data/customers.json'
 import conversationsData from '@/data/conversations.json'

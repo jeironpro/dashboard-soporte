@@ -1,3 +1,7 @@
+/**
+ * Definiciones de tipos para el dominio de soporte.
+ * Incluye tipos para tickets, agentes, clientes y conversaciones.
+ */
 export type TicketEstado = 'abierto' | 'en_progreso' | 'cerrado'
 export type Prioridad = 'baja' | 'media' | 'alta' | 'critica'
 export type Categoria = 'acceso' | 'bug' | 'consulta' | 'facturacion' | 'mejora'

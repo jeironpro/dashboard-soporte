@@ -1,3 +1,8 @@
+/**
+ * Dialog para crear nuevos tickets.
+ * Formulario con campos de asunto, descripción, categoría, prioridad y canal.
+ * Responsive: grid de 1 columna en móvil, 3 en desktop.
+ */
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'

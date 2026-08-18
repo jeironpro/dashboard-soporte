@@ -1,3 +1,8 @@
+/**
+ * Gráfico de tickets por día.
+ * Muestra la tendencia de tickets abiertos, en progreso y cerrados.
+ * Incluye tabla de acceso alternativo para lectores de pantalla.
+ */
 import {
   Area,
   AreaChart,

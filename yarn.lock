@@ -590,13 +590,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/fraunces@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@fontsource-variable/fraunces@npm:5.3.0"
-  checksum: 10c0/da14d7f20276a86a8c18ac4b083aaf6fad5b22fa64918353e53c865bfeab8ab245f278bb527496c9844a295c38319c2581ff1b781a4a29e5b2b3dde8eb3a87d7
-  languageName: node
-  linkType: hard
-
 "@fontsource-variable/geist-mono@npm:^5.3.0":
   version: 5.3.0
   resolution: "@fontsource-variable/geist-mono@npm:5.3.0"
@@ -2308,7 +2301,6 @@ __metadata:
   resolution: "dashboard-soporte@workspace:."
   dependencies:
     "@base-ui/react": "npm:^1.7.0"
-    "@fontsource-variable/fraunces": "npm:^5.3.0"
     "@fontsource-variable/geist": "npm:^5.3.0"
     "@fontsource-variable/geist-mono": "npm:^5.3.0"
     "@fontsource/instrument-serif": "npm:^5.3.0"
