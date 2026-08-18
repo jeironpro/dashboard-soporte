@@ -11,16 +11,16 @@ import type { SerieDia } from '@/lib/stats'
 import { ChartTooltip } from '@/components/charts/chart-tooltip'
 
 const SERIES = [
-  { key: 'cerrado', etiqueta: 'Cerrados', color: 'var(--chart-1)' },
-  { key: 'en_progreso', etiqueta: 'En progreso', color: 'var(--chart-2)' },
-  { key: 'abierto', etiqueta: 'Abiertos', color: 'var(--chart-3)' },
+  { key: 'cerrado', etiqueta: 'Cerrados', color: 'var(--success)' },
+  { key: 'en_progreso', etiqueta: 'En progreso', color: 'var(--brand)' },
+  { key: 'abierto', etiqueta: 'Abiertos', color: 'var(--warning)' },
 ] as const
 
 export function TicketsPorDiaChart({ datos }: { datos: SerieDia[] }) {
   return (
     <div>
       <div
-        className="h-64 w-full"
+        className="h-48 w-full sm:h-64"
         role="img"
         aria-label="Tickets creados por día y por estado en los últimos 30 días"
       >
@@ -35,14 +35,14 @@ export function TicketsPorDiaChart({ datos }: { datos: SerieDia[] }) {
               }}
               minTickGap={28}
               tick={{ fontSize: 12 }}
-              stroke="var(--muted-foreground)"
+              stroke="var(--ink-3)"
               fontSize={12}
             />
             <YAxis
               allowDecimals={false}
               width={30}
               tick={{ fontSize: 12 }}
-              stroke="var(--muted-foreground)"
+              stroke="var(--ink-3)"
               fontSize={12}
             />
             <Tooltip

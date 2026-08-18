@@ -42,20 +42,21 @@ export function TicketDetailPage() {
   const ticket = getTicketPorId(ticketId ?? '')
 
   if (!ticket) {
-    return (
-      <section className="mx-auto flex max-w-2xl flex-col items-center gap-3 px-4 py-16 text-center">
-        <p className="text-lg font-semibold text-foreground">
-          Ticket no encontrado
-        </p>
-        <p className="text-sm text-muted-foreground">
-          El ticket {ticketId} no existe o fue eliminado.
-        </p>
-        <Button variant="outline" nativeButton={false} render={<Link to="/tickets" />}>
-          Volver a Tickets
-        </Button>
-      </section>
-    )
-  }
+return (
+    <section className="flex max-w-2xl flex-col items-center gap-3 px-4 py-16 text-center">
+      <p className="eyebrow">404</p>
+      <p className="text-lg font-semibold text-foreground">
+        Ticket no encontrado
+      </p>
+      <p className="text-sm text-muted-foreground">
+        El ticket {ticketId} no existe o fue eliminado.
+      </p>
+      <Button variant="outline" nativeButton={false} render={<Link to="/tickets" />}>
+        Volver a Tickets
+      </Button>
+    </section>
+  )
+}
 
   const cliente = getClientePorId(ticket.cliente_id)
   const agente = getAgentePorId(ticket.agente_id)
@@ -67,7 +68,7 @@ export function TicketDetailPage() {
     : null
 
   return (
-    <section className="mx-auto flex max-w-6xl flex-col gap-4">
+    <section className="flex flex-col gap-4">
       <Button variant="ghost" size="sm" className="-mx-2 w-fit" nativeButton={false} render={<Link to="/tickets" />}>
         <ArrowLeft aria-hidden="true" className="size-4" />
         Volver a Tickets
@@ -82,16 +83,21 @@ export function TicketDetailPage() {
               {ETIQUETAS_CATEGORIA[ticket.categoria]}
             </span>
           </div>
-          <CardTitle className="font-heading text-2xl">
+          <CardTitle className="text-2xl">
             {ticket.titulo}
           </CardTitle>
-          <CardDescription className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          <CardDescription className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px] tracking-[0.08em] text-ink-2 uppercase">
             <span className="tabular-nums">{ticket.id}</span>
             <span>{ETIQUETAS_CANAL[ticket.canal]}</span>
-            <span>Creado {formatearFechaHora(ticket.creado_el)}</span>
+            <span>
+              Creado{' '}
+              <time dateTime={ticket.creado_el}>
+                {formatearFechaHora(ticket.creado_el)}
+              </time>
+            </span>
             {tiempoRespuesta !== null && (
               <span>
-                Primera respuesta en {formatearDuracionHoras(tiempoRespuesta)}
+                Respuesta en {formatearDuracionHoras(tiempoRespuesta)}
               </span>
             )}
           </CardDescription>
@@ -106,20 +112,22 @@ export function TicketDetailPage() {
       <div className="grid items-start gap-4 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Conversación</CardTitle>
-            <CardDescription>
+            <p className="eyebrow mb-1">Historial</p>
+            <CardTitle className="text-xl">Conversación</CardTitle>
+            <CardDescription className="font-mono text-[11px] tracking-[0.08em] uppercase">
               {mensajes.length} mensajes
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <HiloConversacion mensajes={mensajes} />
+            <HiloConversacion mensajes={mensajes} estado={ticket.estado} />
           </CardContent>
         </Card>
 
         <div className="flex flex-col gap-4">
           <Card>
             <CardHeader>
-              <CardTitle>Cliente</CardTitle>
+              <p className="eyebrow mb-1">Quién reporta</p>
+              <CardTitle className="text-xl">Cliente</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {cliente && (
@@ -161,7 +169,8 @@ export function TicketDetailPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Asignación</CardTitle>
+              <p className="eyebrow mb-1">Equipo</p>
+              <CardTitle className="text-xl">Asignación</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {agente ? (

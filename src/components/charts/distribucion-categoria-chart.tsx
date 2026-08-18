@@ -26,7 +26,7 @@ export function DistribucionCategoriaChart({
   return (
     <div>
       <div
-        className="h-56 w-full"
+        className="h-44 w-full sm:h-56"
         role="img"
         aria-label="Distribución de tickets por categoría"
       >
@@ -45,17 +45,17 @@ export function DistribucionCategoriaChart({
               tickLine={false}
               axisLine={false}
               tick={{ fontSize: 12 }}
-              stroke="var(--muted-foreground)"
+              stroke="var(--ink-3)"
               fontSize={12}
             />
-            <Tooltip content={<ChartTooltip />} cursor={{ fill: 'var(--muted)', opacity: 0.4 }} />
+            <Tooltip content={<ChartTooltip />} cursor={{ fill: 'var(--paper-2)', opacity: 0.6 }} />
             <Bar
               dataKey="total"
               name="Tickets"
-              fill="var(--chart-1)"
+              fill="var(--brand)"
               radius={[0, 4, 4, 0]}
               barSize={18}
-              label={{ position: 'right', fontSize: 12, fill: 'var(--muted-foreground)' }}
+              label={{ position: 'right', fontSize: 12, fill: 'var(--ink-2)' }}
             />
           </BarChart>
         </ResponsiveContainer>

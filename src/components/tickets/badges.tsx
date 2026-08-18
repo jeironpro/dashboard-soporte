@@ -29,30 +29,24 @@ export const ETIQUETAS_PRIORIDAD: Record<Prioridad, string> = {
   critica: 'Crítica',
 }
 
-const COLORES_ESTADO: Record<TicketEstado, string> = {
-  abierto: 'border-transparent bg-amber-100 text-amber-900',
-  en_progreso: 'border-transparent bg-sky-100 text-sky-900',
-  cerrado: 'border-transparent bg-emerald-100 text-emerald-900',
-}
-
 const PUNTO_ESTADO: Record<TicketEstado, string> = {
-  abierto: 'bg-amber-500',
-  en_progreso: 'bg-sky-500',
-  cerrado: 'bg-emerald-600',
+  abierto: 'bg-warning',
+  en_progreso: 'bg-brand',
+  cerrado: 'bg-success',
 }
 
 const COLORES_PRIORIDAD: Record<Prioridad, string> = {
-  baja: 'border-border bg-muted text-muted-foreground',
-  media: 'border-amber-300/70 bg-amber-50 text-amber-900',
-  alta: 'border-orange-300/70 bg-orange-50 text-orange-900',
-  critica: 'border-red-300/70 bg-red-50 text-red-900',
+  baja: 'border-border bg-muted text-ink-2',
+  media: 'border-[color-mix(in_oklch,var(--warning)_35%,transparent)] bg-[color-mix(in_oklch,var(--warning)_15%,transparent)] text-ink-1',
+  alta: 'border-[color-mix(in_oklch,var(--warning)_55%,transparent)] bg-[color-mix(in_oklch,var(--warning)_25%,transparent)] text-ink-0',
+  critica: 'border-[color-mix(in_oklch,var(--critical)_45%,transparent)] bg-[color-mix(in_oklch,var(--critical)_15%,transparent)] text-ink-0',
 }
 
 export function StatusBadge({ estado }: { estado: TicketEstado }) {
   return (
     <Badge
       variant="outline"
-      className={`gap-1.5 font-medium ${COLORES_ESTADO[estado]}`}
+      className="h-6 gap-1.5 rounded-full px-2.5 font-mono text-[10px] tracking-[0.12em] uppercase"
     >
       <span
         aria-hidden="true"
@@ -67,7 +61,7 @@ export function PriorityBadge({ prioridad }: { prioridad: Prioridad }) {
   return (
     <Badge
       variant="outline"
-      className={`font-medium ${COLORES_PRIORIDAD[prioridad]}`}
+      className={`h-6 rounded-full px-2.5 font-mono text-[10px] tracking-[0.12em] uppercase ${COLORES_PRIORIDAD[prioridad]}`}
     >
       {ETIQUETAS_PRIORIDAD[prioridad]}
     </Badge>
