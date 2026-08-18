@@ -1,4 +1,4 @@
-import type { Categoria, Prioridad, TicketEstado } from '@/lib/types'
+import type { Canal, Categoria, Prioridad, TicketEstado } from '@/lib/types'
 import { Badge } from '@/components/ui/badge'
 
 export const ETIQUETAS_ESTADO: Record<TicketEstado, string> = {
@@ -13,6 +13,13 @@ export const ETIQUETAS_CATEGORIA: Record<Categoria, string> = {
   consulta: 'Consulta',
   facturacion: 'Facturación',
   mejora: 'Mejora',
+}
+
+export const ETIQUETAS_CANAL: Record<Canal, string> = {
+  chat: 'Chat',
+  email: 'Email',
+  telefono: 'Teléfono',
+  web: 'Formulario web',
 }
 
 export const ETIQUETAS_PRIORIDAD: Record<Prioridad, string> = {
