@@ -112,7 +112,7 @@ export function DashboardPage() {
               {satisfaccion !== null ? `· CSAT ${satisfaccion}/5` : ''}
             </CardDescription>
           </div>
-          <Button variant="outline" size="sm" render={<Link to="/tickets" />}>
+          <Button variant="outline" size="sm" nativeButton={false} render={<Link to="/tickets" />}>
             Ver todos
           </Button>
         </CardHeader>
