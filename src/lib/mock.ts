@@ -15,21 +15,19 @@ export const TICKETS: Ticket[] = ticketsData as Ticket[]
 export const CONVERSACIONES: Conversacion[] = conversationsData as Conversacion[]
 
 export function getTicketPorId(id: string): Ticket | undefined {
-  return TICKETS.find((ticket) => ticket.id === id)
+    return TICKETS.find((ticket) => ticket.id === id)
 }
 
 export function getAgentePorId(id: string | null): Agente | undefined {
-  if (!id) return undefined
-  return AGENTES.find((agente) => agente.id === id)
+    if (!id) return undefined
+    return AGENTES.find((agente) => agente.id === id)
 }
 
 export function getClientePorId(id: string | null): Cliente | undefined {
-  if (!id) return undefined
-  return CLIENTES.find((cliente) => cliente.id === id)
+    if (!id) return undefined
+    return CLIENTES.find((cliente) => cliente.id === id)
 }
 
 export function getConversacionesDeTicket(ticketId: string): Conversacion[] {
-  return CONVERSACIONES.filter(
-    (conversacion) => conversacion.ticket_id === ticketId,
-  )
+    return CONVERSACIONES.filter((conversacion) => conversacion.ticket_id === ticketId)
 }
