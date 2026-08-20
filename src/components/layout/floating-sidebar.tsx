@@ -14,7 +14,6 @@ import {
 import {
   ChevronLeft,
   ChevronRight,
-  Headset,
   LogOut,
   Menu,
   User,
@@ -121,9 +120,12 @@ export function FloatingSidebar() {
         style={{ width: colapsado ? 72 : 260 }}
       >
         <div className="flex items-center gap-3 px-4 pt-5 pb-4">
-          <span className="sidebar-logo flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand text-primary-foreground">
-            <Headset className="size-4.5" aria-hidden="true" />
-          </span>
+          <img
+            src="/favicon.svg"
+            alt=""
+            aria-hidden="true"
+            className="sidebar-logo size-9 shrink-0"
+          />
           {!colapsado && (
             <span className="sidebar-entrance text-sm font-semibold tracking-tight text-foreground">
               NubeCart
