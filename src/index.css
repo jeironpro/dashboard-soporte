@@ -4,12 +4,12 @@
  */
 
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
-@import "@fontsource-variable/geist-mono";
-@import "@fontsource/instrument-serif/400.css";
-@import "@fontsource/instrument-serif/400-italic.css";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -78,20 +78,20 @@
 :root {
     --paper-0: oklch(98.4% 0.005 258);
     --paper-1: oklch(96.2% 0.01 258);
-    --paper-2: oklch(93.0% 0.015 258);
-    --paper-3: oklch(89.0% 0.02 258);
-    --ink-0: oklch(18.0% 0.03 258);
-    --ink-1: oklch(35.0% 0.025 258);
-    --ink-2: oklch(52.0% 0.018 258);
-    --ink-3: oklch(70.0% 0.012 258);
-    --brand: oklch(54.0% 0.22 268);
-    --brand-soft: oklch(72.0% 0.14 268);
-    --brand-tint: oklch(94.0% 0.04 268);
-    --companion: oklch(82.0% 0.18 130);
-    --success: oklch(68.0% 0.15 145);
-    --warning: oklch(74.0% 0.18 50);
-    --critical: oklch(55.0% 0.22 27);
-    --focus: oklch(46.0% 0.22 268);
+    --paper-2: oklch(93% 0.015 258);
+    --paper-3: oklch(89% 0.02 258);
+    --ink-0: oklch(18% 0.03 258);
+    --ink-1: oklch(35% 0.025 258);
+    --ink-2: oklch(52% 0.018 258);
+    --ink-3: oklch(70% 0.012 258);
+    --brand: oklch(54% 0.22 268);
+    --brand-soft: oklch(72% 0.14 268);
+    --brand-tint: oklch(94% 0.04 268);
+    --companion: oklch(82% 0.18 130);
+    --success: oklch(68% 0.15 145);
+    --warning: oklch(74% 0.18 50);
+    --critical: oklch(55% 0.22 27);
+    --focus: oklch(46% 0.22 268);
 
     --background: var(--paper-0);
     --foreground: var(--ink-1);
@@ -157,7 +157,9 @@
         mask-composite: intersect;
         -webkit-mask-composite: source-in;
     }
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
         @apply font-heading;
     }
     ::selection {

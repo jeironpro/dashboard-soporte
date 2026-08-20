@@ -6,6 +6,6 @@
 import { LayoutDashboard, Ticket } from 'lucide-react'
 
 export const NAV_PRINCIPAL = [
-  { titulo: 'Panel', icono: LayoutDashboard, to: '/', end: true },
-  { titulo: 'Tickets', icono: Ticket, to: '/tickets', end: false },
+    { titulo: 'Panel', icono: LayoutDashboard, to: '/', end: true },
+    { titulo: 'Tickets', icono: Ticket, to: '/tickets', end: false },
 ]

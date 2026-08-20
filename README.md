@@ -4,17 +4,17 @@ Panel de gestión de soporte técnico para e-commerce. Proyecto de portafolio qu
 
 ## Stack tecnológico
 
-| Capa | Tecnología |
-|------|-----------|
-| Framework | React 19 + TypeScript 6 |
-| Bundler | Vite 8 |
-| Estilos | Tailwind CSS 4 (CSS-first config) |
-| Componentes | shadcn/base-nova (headless) |
-| Gráficos | Recharts 3 |
-| Animaciones | anime.js 4 |
-| Routing | React Router 7 |
-| Linter | oxlint |
-| Testing | Vitest + Testing Library + jest-axe |
+| Capa        | Tecnología                          |
+| ----------- | ----------------------------------- |
+| Framework   | React 19 + TypeScript 6             |
+| Bundler     | Vite 8                              |
+| Estilos     | Tailwind CSS 4 (CSS-first config)   |
+| Componentes | shadcn/base-nova (headless)         |
+| Gráficos    | Recharts 3                          |
+| Animaciones | anime.js 4                          |
+| Routing     | React Router 7                      |
+| Linter      | oxlint                              |
+| Testing     | Vitest + Testing Library + jest-axe |
 
 ## Instalación
 
@@ -32,16 +32,16 @@ yarn dev
 
 ## Scripts disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `yarn dev` | Servidor de desarrollo con hot reload |
-| `yarn build` | Build de producción (tsc + vite build) |
-| `yarn preview` | Vista previa del build de producción |
-| `yarn test` | Ejecutar tests una vez |
-| `yarn test:watch` | Ejecutar tests en modo observación |
-| `yarn coverage` | Ejecutar tests con cobertura de código |
-| `yarn lint` | Verificar código con oxlint |
-| `yarn typecheck` | Verificar tipos con TypeScript |
+| Comando           | Descripción                            |
+| ----------------- | -------------------------------------- |
+| `yarn dev`        | Servidor de desarrollo con hot reload  |
+| `yarn build`      | Build de producción (tsc + vite build) |
+| `yarn preview`    | Vista previa del build de producción   |
+| `yarn test`       | Ejecutar tests una vez                 |
+| `yarn test:watch` | Ejecutar tests en modo observación     |
+| `yarn coverage`   | Ejecutar tests con cobertura de código |
+| `yarn lint`       | Verificar código con oxlint            |
+| `yarn typecheck`  | Verificar tipos con TypeScript         |
 
 ## Estructura del proyecto
 
@@ -105,12 +105,12 @@ src/
 
 ### Rutas
 
-| Ruta | Página | Descripción |
-|------|--------|-------------|
-| `/` | DashboardPage | KPIs, gráficos de tendencia y tickets recientes |
-| `/tickets` | TicketsPage | Tabla completa con búsqueda, filtros y ordenamiento |
-| `/tickets/:ticketId` | TicketDetailPage | Detalle del ticket con conversación |
-| `/perfil` | ProfilePage | Información del agente |
+| Ruta                 | Página           | Descripción                                         |
+| -------------------- | ---------------- | --------------------------------------------------- |
+| `/`                  | DashboardPage    | KPIs, gráficos de tendencia y tickets recientes     |
+| `/tickets`           | TicketsPage      | Tabla completa con búsqueda, filtros y ordenamiento |
+| `/tickets/:ticketId` | TicketDetailPage | Detalle del ticket con conversación                 |
+| `/perfil`            | ProfilePage      | Información del agente                              |
 
 ### Datos
 

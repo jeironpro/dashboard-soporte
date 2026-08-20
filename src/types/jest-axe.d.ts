@@ -1,21 +1,21 @@
 import type { Assertion } from 'vitest'
 
 declare module 'vitest' {
-  interface Assertion<T = unknown> {
-    toHaveNoViolations(): void
-  }
-  interface AsymmetricMatchersContaining {
-    toHaveNoViolations(): void
-  }
+    interface Assertion<T = unknown> {
+        toHaveNoViolations(): void
+    }
+    interface AsymmetricMatchersContaining {
+        toHaveNoViolations(): void
+    }
 }
 
 export interface AxeResults {
-  violations: ReadonlyArray<{
-    id: string
-    impact?: string
-    description: string
-    nodes: ReadonlyArray<unknown>
-  }>
+    violations: ReadonlyArray<{
+        id: string
+        impact?: string
+        description: string
+        nodes: ReadonlyArray<unknown>
+    }>
 }
 
 export function axe(node: Element): Promise<AxeResults>
